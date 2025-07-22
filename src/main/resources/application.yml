@@ -1,0 +1,28 @@
+spring:
+  data:
+    redis:
+      host: 192.168.85.128
+      port: 6380
+      password: 123456
+      database: 10
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-wait: -1ms
+          max-idle: 8
+          min-idle: 0
+  main:
+    allow-circular-references: true
+
+# 开启异步支持
+spring.task.execution.pool.core-size: 5
+spring.task.execution.pool.max-size: 10
+spring.task.execution.pool.queue-capacity: 100
+spring.task.execution.thread-name-prefix: task-
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.example.task: DEBUG

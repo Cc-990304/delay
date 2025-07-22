@@ -1,0 +1,16 @@
+# 停止现有服务
+sh bin/mqshutdown broker
+sh bin/mqshutdown namesrv
+pkill -f rocketmq
+sleep 3
+
+# 清理缓存
+rm -rf logs/*
+
+# 启动NameServer
+nohup sh bin/mqnamesrv > logs/namesrv.log 2>&1 &
+sleep 5
+
+# 使用新配置启动Broker
+nohup sh bin/mqbroker -n 192.168.85.128:9876 -c conf/broker-delay.conf > logs/broker.log 2>&1 &
+sleep 10
