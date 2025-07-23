@@ -13,4 +13,4 @@ sleep 5
 
 # 使用新配置启动Broker
 nohup sh bin/mqbroker -n 192.168.85.128:9876 -c conf/broker-delay.conf > logs/broker.log 2>&1 &
-sleep 10
+
